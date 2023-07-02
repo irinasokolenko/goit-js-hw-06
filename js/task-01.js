@@ -1,8 +1,12 @@
 "use strict";
 
-const item = document.querySelectorAll('.item');
-Array.prototype.forEach.call(item, (element) => {
-    const title = element.querySelector('h2').innerHTML;
-    const itemsLength = element.querySelectorAll('li').length;
-    console.dir(`Категорія: ${title} / Кількість елементів: ${itemsLength}`);
-});
+const totalCategories = document.querySelectorAll(".item");
+console.log(`В списке ${totalCategories.length} категории.`);
+
+const categoriesArray = [...totalCategories]
+  .map(
+    categories => `Категория: ${categories.children[0].textContent}
+Количество элементов: ${categories.children[1].children.length}`
+  )
+  .join("\n");
+console.log(categoriesArray);
